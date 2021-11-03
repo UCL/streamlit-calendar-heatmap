@@ -10,12 +10,17 @@ import React, { ReactNode } from "react"
 import 'react-calendar-heatmap/dist/styles.css';
 
 class StreamlitCalendarHeatmap extends StreamlitComponentBase {
-  getTooltipDataAttrs = (value: { date: any; count: any; }) => {
+  getTooltipDataAttrs = (value: { date: any; count: any; tooltip: any;}) => {
     // Temporary hack around null value.date issue
     if (!value || !value.date) {
       return null;
     }
-    if (value.count) {
+    if (value.tooltip) {
+      return {
+        'data-tip': `${value.tooltip}`,
+      };
+    }
+    else if (value.count) {
       return {
         'data-tip': `${value.date} has count: ${value.count}`,
       };
@@ -45,7 +50,9 @@ class StreamlitCalendarHeatmap extends StreamlitComponentBase {
             onClick={this.handleClick}
             tooltipDataAttrs={this.getTooltipDataAttrs}
           />
-          <ReactTooltip />
+          <ReactTooltip 
+            multiline={true}
+          />
         </div>
       )
   }

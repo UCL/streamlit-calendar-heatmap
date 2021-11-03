@@ -30,8 +30,12 @@ def calendar_heatmap(start_date,end_date,values, key=None):
     end_date: str
         The end date for the calendar heatmap ("YYYY-MM-DD")
     values: list
-        List of dictionaries containing date and optional count; e.g.:
-        [{"date":"2021-05-10", "count":39}]
+        List of dictionaries containing date (required), count (optional),
+        and tooltip (optional - supports multiline with <br>); e.g.:
+
+        [{"date":"2021-05-10", "count":39, "tooltip": "Hello<br>World!"}]
+
+        Tooltip defaults to "{date} has count: {count}" or just "{date}" if no count.
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
@@ -55,9 +59,9 @@ if not _RELEASE:
     # Create an instance of our component with a constant `name` arg, and
     # print its output value.
     values = [
-        {"date":"2021-03-29", "count":3},
-        {"date":"2021-04-05", "count":9},
-        {"date":"2021-04-12", "count":5},
+        {"date":"2021-03-29", "count":3, "tooltip":"Tooltip 1"},
+        {"date":"2021-04-05", "count":9, "tooltip":"Multiline<br>Tooltip"},
+        {"date":"2021-04-12"},
         {"date":"2021-04-24", "count":12},
         {"date":"2021-05-10", "count":10},
         ]
