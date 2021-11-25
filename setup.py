@@ -2,10 +2,10 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-calendar-heatmap",
-    version="0.1.0",
+    version="0.3.0",
     author="Tom Couch",
     author_email="t.couch@ucl.ac.uk",
-    description="",
+    description="Calendar heatmap streamlit component to display and select dates",
     long_description="",
     long_description_content_type="text/plain",
     url="",
